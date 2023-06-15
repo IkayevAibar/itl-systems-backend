@@ -1,4 +1,5 @@
-from rest_framework import generics, filters
+from rest_framework import generics, filters, viewsets, status, mixins
+from rest_framework.response import Response
 from .models import Lead, TextContent, ImageContent
 from .serializers import LeadSerializer, TextContentSerializer, ImageContentSerializer
 from django_filters.rest_framework import DjangoFilterBackend
@@ -26,7 +27,10 @@ class ImageContentFilter(django_filters.FilterSet):
         fields = ['created_at']
 
 
-class LeadListCreateAPIView(generics.ListCreateAPIView):
+class LeadViewSet(mixins.CreateModelMixin, 
+                   mixins.RetrieveModelMixin, 
+                   mixins.ListModelMixin,
+                   viewsets.GenericViewSet):
     queryset = Lead.objects.all()
     serializer_class = LeadSerializer
     filter_backends = [filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend]
@@ -34,11 +38,13 @@ class LeadListCreateAPIView(generics.ListCreateAPIView):
     ordering_fields = ['created_at']
     search_fields = ['id','name', 'email', 'phone']
 
-class LeadRetrieveAPIView(generics.RetrieveAPIView):
-    queryset = Lead.objects.all()
-    serializer_class = LeadSerializer
 
-class TextContentListCreateAPIView(generics.ListCreateAPIView):
+    
+
+class TextContentViewSet(mixins.CreateModelMixin, 
+                   mixins.RetrieveModelMixin, 
+                   mixins.ListModelMixin,
+                   viewsets.GenericViewSet):
     queryset = TextContent.objects.all()
     serializer_class = TextContentSerializer
     filter_backends = [filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend]
@@ -46,18 +52,14 @@ class TextContentListCreateAPIView(generics.ListCreateAPIView):
     ordering_fields = ['created_at']
     search_fields = ['id','key', 'content']
 
-class TextContentRetrieveAPIView(generics.RetrieveAPIView):
-    queryset = TextContent.objects.all()
-    serializer_class = TextContentSerializer
 
-class ImageContentListCreateAPIView(generics.ListCreateAPIView):
+class ImageContentViewSet(mixins.CreateModelMixin, 
+                   mixins.RetrieveModelMixin, 
+                   mixins.ListModelMixin,
+                   viewsets.GenericViewSet):
     queryset = ImageContent.objects.all()
     serializer_class = ImageContentSerializer
     filter_backends = [filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend]
     filterset_class = ImageContentFilter
     ordering_fields = ['created_at']
     search_fields = ['id','key']
-
-class ImageContentRetrieveAPIView(generics.RetrieveAPIView):
-    queryset = ImageContent.objects.all()
-    serializer_class = ImageContentSerializer
