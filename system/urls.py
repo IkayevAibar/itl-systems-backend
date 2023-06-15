@@ -14,6 +14,7 @@ router.register('text-contents', TextContentViewSet, basename='text-content-list
 router.register('image-contents', ImageContentViewSet, basename='image-content-list')
 
 urlpatterns = [
+    path('', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
