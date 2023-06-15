@@ -25,8 +25,17 @@ class LeadAdmin(admin.ModelAdmin):
     search_fields = ('id', 'name', 'email', 'phone', 'args')
     ordering = ('id', 'name',)
 
+class TextContentAdmin(admin.ModelAdmin):
+    list_display = ('key', 'content')
+    search_fields = ('key', 'content')
+    ordering = ('id',)
+
+class ImageContentAdmin(admin.ModelAdmin):
+    list_display = ('key', 'content')
+    search_fields = ('key',)
+    ordering = ('id',)
 
 admin.site.register(SimpleUser, SimpleUserAdmin)
 admin.site.register(Lead, LeadAdmin)
-admin.site.register(TextContent)
-admin.site.register(ImageContent)
+admin.site.register(TextContent, TextContentAdmin)
+admin.site.register(ImageContent, ImageContentAdmin)

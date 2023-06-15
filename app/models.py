@@ -52,10 +52,10 @@ class TimeStampedModel(models.Model):
 
 class Lead(TimeStampedModel):
     id = models.CharField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=255, null=True, blank=True)
-    email = models.EmailField(null=True, blank=True)
-    phone = models.CharField(max_length=255, null=True, blank=True)
-    args = models.JSONField(null=True, blank=True)
+    name = models.CharField("Полное Имя", max_length=255, null=True, blank=True)
+    email = models.EmailField("Почта", null=True, blank=True)
+    phone = models.CharField("Телефон", max_length=255, null=True, blank=True)
+    args = models.JSONField("JSON", null=True, blank=True)
     
 
     class Meta:
