@@ -1,9 +1,12 @@
 from rest_framework import generics, filters, viewsets, status, mixins
 from rest_framework.response import Response
-from .models import Lead, TextContent, ImageContent
-from .serializers import LeadSerializer, TextContentSerializer, ImageContentSerializer
+from rest_framework.decorators import action
+
 from django_filters.rest_framework import DjangoFilterBackend
 import django_filters
+
+from .models import Lead, TextContent, ImageContent
+from .serializers import LeadSerializer, TextContentSerializer, ImageContentSerializer
 
 class LeadFilter(django_filters.FilterSet):
     created_at = django_filters.DateTimeFromToRangeFilter(field_name='created_at')
@@ -51,6 +54,7 @@ class TextContentViewSet(mixins.CreateModelMixin,
     filterset_class = TextContentFilter
     ordering_fields = ['created_at']
     search_fields = ['id','key', 'content']
+    
 
 
 class ImageContentViewSet(mixins.CreateModelMixin, 
