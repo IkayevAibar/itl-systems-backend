@@ -55,9 +55,10 @@ class Lead(TimeStampedModel):
     name = models.CharField("Полное Имя", max_length=255, null=True, blank=True)
     email = models.EmailField("Почта", null=True, blank=True)
     phone = models.CharField("Телефон", max_length=255, null=True, blank=True)
+    block = models.CharField("Блок", max_length=255, null=True, blank=True)
     args = models.JSONField("JSON", null=True, blank=True)
     
-
+    
     class Meta:
         verbose_name = "Лид"
         verbose_name_plural = "Лиды"

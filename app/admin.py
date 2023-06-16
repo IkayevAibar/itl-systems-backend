@@ -21,9 +21,9 @@ class SimpleUserAdmin(UserAdmin):
     ordering = ('email',)
 
 class LeadAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'email', 'phone', 'args')
-    search_fields = ('id', 'name', 'email', 'phone', 'args')
-    ordering = ('id', 'name',)
+    list_display = ('name', 'email', 'phone', 'created_at', 'args')
+    search_fields = ('name', 'email', 'phone', 'args')
+    # ordering = ('created_at',)
 
 class TextContentAdmin(admin.ModelAdmin):
     list_display = ('key', 'content')

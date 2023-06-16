@@ -39,7 +39,14 @@ class LeadViewSet(mixins.CreateModelMixin,
     filter_backends = [filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend]
     filterset_class = LeadFilter
     ordering_fields = ['created_at']
-    search_fields = ['id','name', 'email', 'phone']
+    search_fields = ['name', 'email', 'phone']
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
     
