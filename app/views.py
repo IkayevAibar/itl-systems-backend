@@ -1,4 +1,4 @@
-from rest_framework import generics, filters, viewsets, status, mixins
+from rest_framework import filters, viewsets, status, mixins, permissions
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
@@ -40,6 +40,7 @@ class LeadViewSet(mixins.CreateModelMixin,
     filterset_class = LeadFilter
     ordering_fields = ['created_at']
     search_fields = ['name', 'email', 'phone']
+    permission_classes = [permissions.IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -61,7 +62,7 @@ class TextContentViewSet(mixins.CreateModelMixin,
     filterset_class = TextContentFilter
     ordering_fields = ['created_at']
     search_fields = ['id','key', 'content']
-    
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class ImageContentViewSet(mixins.CreateModelMixin, 
@@ -74,3 +75,4 @@ class ImageContentViewSet(mixins.CreateModelMixin,
     filterset_class = ImageContentFilter
     ordering_fields = ['created_at']
     search_fields = ['id','key']
+    permission_classes = [permissions.IsAuthenticated]
