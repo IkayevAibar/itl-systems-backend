@@ -162,6 +162,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8080",
     "http://192.168.100.8:8080",
+    "https://thefactorytest.netlify.app",
 ]
 
 CORS_ALLOW_METHODS = [
