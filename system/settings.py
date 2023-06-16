@@ -151,11 +151,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
-    "http://127.0.0.1:8080",
-    "http://192.168.100.8:8080",
-]
+CORS_ALLOWED_ORIGINS = ['*']
 
 CORS_ALLOW_METHODS = [
     'GET',
@@ -185,3 +181,5 @@ CORS_EXPOSE_HEADERS = [
 ]
 
 CORS_PREFLIGHT_MAX_AGE = 86400  # 24 часа
+
+CORS_ALLOW_REDIRECTS = False
