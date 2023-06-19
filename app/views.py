@@ -40,7 +40,14 @@ class LeadViewSet(mixins.CreateModelMixin,
     filterset_class = LeadFilter
     ordering_fields = ['created_at']
     search_fields = ['name', 'email', 'phone']
-    permission_classes = [permissions.IsAuthenticated]
+    
+    def get_permissions(self):
+        if self.action in ['create']:
+            permission_classes = [permissions.AllowAny]
+        else:
+            permission_classes = [permissions.IsAuthenticated]
+        return [permission() for permission in permission_classes]
+    
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
