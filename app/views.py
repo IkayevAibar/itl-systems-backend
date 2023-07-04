@@ -2,18 +2,33 @@ from rest_framework import filters, viewsets, status, mixins, permissions
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
-from django_filters.rest_framework import DjangoFilterBackend
+from django_filters.rest_framework import DjangoFilterBackend, DateFilter
 import django_filters
 
 from .models import Lead, TextContent, ImageContent
 from .serializers import LeadSerializer, TextContentSerializer, ImageContentSerializer
+from django import forms
+from django_filters import Filter
+
+class DateFilter(Filter):
+    field_class = forms.DateField
+
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('lookup_expr', 'date')
+        super().__init__(*args, **kwargs)
+
+    def filter(self, qs, value):
+        if value:
+            return qs.filter(**{'{}__{}'.format(self.field_name, self.lookup_expr): value})
+        return qs
 
 class LeadFilter(django_filters.FilterSet):
-    created_at = django_filters.DateTimeFromToRangeFilter(field_name='created_at')
+    created_at = DateFilter()
+    created_at_range = django_filters.DateTimeFromToRangeFilter(field_name='created_at')
 
     class Meta:
         model = Lead
-        fields = ['created_at']
+        fields = ['created_at', 'created_at_range']
 
 class TextContentFilter(django_filters.FilterSet):
     created_at = django_filters.DateTimeFromToRangeFilter(field_name='created_at')

@@ -188,6 +188,18 @@ CORS_ALLOW_METHODS = [
 ]
 
 
+# CORS_ALLOW_HEADERS = [
+#     'accept',
+#     'accept-encoding',
+#     'authorization',
+#     'content-type',
+#     'dnt',
+#     'origin',
+#     'user-agent',
+#     'x-csrftoken',
+#     'x-requested-with',
+#     'Access-Control-Allow-Credentials'
+# ]
 
 CORS_EXPOSE_HEADERS = [
     'content-type',
@@ -198,4 +210,4 @@ CORS_PREFLIGHT_MAX_AGE = 86400  # 24 часа
 
 CORS_ALLOW_REDIRECTS = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_ALL_HEADERS=True
+CORS_ALLOW_ALL_HEADERS = True
