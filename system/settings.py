@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     #3-party apps
     'rest_framework',
     'django_filters',
-    'corsheaders',
+    # 'corsheaders',
     #Django apps
     'app',
 ]
