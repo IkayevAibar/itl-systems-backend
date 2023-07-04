@@ -167,7 +167,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://master--thefactorytest.netlify.app",
     "https://the-factory.gitlab.io",
     "https://*.gitlab.io",
-    "https://gitlab.io"
+    "https://gitlab.io",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
@@ -193,7 +193,8 @@ CORS_ALLOW_HEADERS = [
     'origin',
     'user-agent',
     'x-csrftoken',
-    'x-requested-with'
+    'x-requested-with',
+    'Access-Control-Allow-Credentials'
 ]
 
 CORS_EXPOSE_HEADERS = [
