@@ -168,6 +168,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://the-factory.gitlab.io",
     "https://*.gitlab.io",
     "https://gitlab.io",
+    "http://itl-systems.front.dev.thefactory.kz",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
