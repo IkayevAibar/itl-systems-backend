@@ -166,8 +166,12 @@ CORS_ALLOWED_ORIGINS = [
     "https://*.netlify.app",
     "https://master--thefactorytest.netlify.app",
     "https://the-factory.gitlab.io",
-    "https://*.gitlab.io"
+    "https://*.gitlab.io",
     "https://gitlab.io"
+]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://\w+\.example\.com$",
 ]
 
 CORS_ALLOW_METHODS = [
@@ -199,4 +203,4 @@ CORS_EXPOSE_HEADERS = [
 
 CORS_PREFLIGHT_MAX_AGE = 86400  # 24 часа
 
-CORS_ALLOW_REDIRECTS = False
+CORS_ALLOW_REDIRECTS = True
