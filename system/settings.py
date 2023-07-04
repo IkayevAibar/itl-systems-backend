@@ -171,7 +171,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https://\w+\.example\.com$",
+    r"^https?://\w+\.gitlab\.io$",
 ]
 
 CORS_ALLOW_METHODS = [
