@@ -167,6 +167,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://master--thefactorytest.netlify.app",
     "https://the-factory.gitlab.io",
     "https://*.gitlab.io"
+    "https://gitlab.io"
 ]
 
 CORS_ALLOW_METHODS = [
