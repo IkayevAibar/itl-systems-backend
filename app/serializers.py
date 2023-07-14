@@ -6,7 +6,7 @@ class LeadSerializer(serializers.ModelSerializer):
         cleaned_phone = ''.join(filter(str.isdigit, phone))
         if len(cleaned_phone) not in [11, 12]:
             raise serializers.ValidationError("Некорректный номер телефона")
-        return cleaned_phone
+        return "+"+cleaned_phone
     
     def validate_name(self, name):
         if len(name) < 2:
